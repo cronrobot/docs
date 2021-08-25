@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 export default function Nextra({ Component, pageProps }) {
+  const router = useRouter();
   useEffect(() => {
     localStorage.setItem('theme', 'dark')
     router.reload()
