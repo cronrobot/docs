@@ -1,9 +1,11 @@
 import 'nextra-theme-docs/style.css'
 import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Nextra({ Component, pageProps }) {
   useEffect(() => {
     localStorage.setItem('theme', 'dark')
+    router.reload()
   }, [])
   return (
     <>
