@@ -22,7 +22,7 @@ export default {
       <meta name="twitter:image" content="https://images-ext-2.discordapp.net/external/eKIPzvPAfdytyE9T04luvisqPJdsV_EqWq_dXXa7vXo/https/raw.githubusercontent.com/cronrobot/cronrobot/master/www-cronrobot/assets/Design%2520Assets/3D%2520Renders/Big%2520Logo.png?width=909&height=511" />
       <meta name="twitter:site:domain" content="docs.cronrobot.io" />
       <meta name="twitter:url" content="https://docs.cronrobot.io" />
-      <meta name="og:title" content="Nextra: Next.js static site generator" />
+      <meta name="og:title" content="CronRobot: World's leading uptime monitor" />
       <meta name="og:image" content="https://images-ext-2.discordapp.net/external/eKIPzvPAfdytyE9T04luvisqPJdsV_EqWq_dXXa7vXo/https/raw.githubusercontent.com/cronrobot/cronrobot/master/www-cronrobot/assets/Design%2520Assets/3D%2520Renders/Big%2520Logo.png?width=909&height=511" />
       <meta name="apple-mobile-web-app-title" content="Nextra" />
       <link
