@@ -62,7 +62,7 @@ export default {
   nextLinks: true,
   footer: true,
   footerEditLink: 'Edit this page on GitHub',
-  footerText: <>MIT {new Date().getFullYear()} © CronRobot.</>,
+  footerText: <>MIT {new Date().getFullYear()} © <a href="https://cronrobot.io">CronRobot.</a></>,
   unstable_faviconGlyph: '👋',
   darkMode: true
 }
