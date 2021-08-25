@@ -1,13 +1,15 @@
 import 'nextra-theme-docs/style.css'
 import { useEffect } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 
 export default function Nextra({ Component, pageProps }) {
   const router = useRouter();
   useEffect(() => {
-    localStorage.setItem('theme', 'dark')
-    router.reload()
-  }, [])
+    if (localStorage.getItem('theme') !== 'dark') {
+      localStorage.setItem('theme', 'dark')
+      router.reload()
+    }
+  }, [router])
   return (
     <>
       <Component {...pageProps} />
