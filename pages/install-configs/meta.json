@@ -1,4 +1,8 @@
 {
-    "index": "Grafana",
+    "index": "Introduction",
+    "postgres": "Postgresql (Recommended)",
+    "www-api": "www-api", 
+    "celery-admin": "celery-admin", 
+    "rabbitmq": "rabbitmq", 
     "grafana": "Grafana"
 }

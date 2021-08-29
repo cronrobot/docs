@@ -1,0 +1,66 @@
+# www-api (Website and Dashboard)
+
+This service contains the front pages site and administration dashboard to manage CronRobot.
+
+## Booting it up
+
+```sh
+sh init_env.sh
+docker-compose up -d www-api
+```
+
+## Shutdown
+
+```sh
+docker-compose stop www-api
+```
+
+## Environment variables and secrets
+
+Environment variables are stored in `/www-cronrobot/.env`.
+
+
+| ENV Variable  | Description |
+|---|---|
+| AUTH0_WWW_DOMAIN | Auth0 domain.  |
+| AUTH0_WWW_CLIENT_ID | Auth0 client ID.  |
+| AUTH0_WWW_CLIENT_SECRET | Auth0 client secret.  |
+
+## Rails Secrets
+
+Some secrets are stored using the ruby on rails credentials system. To initialize it and 
+configure secrets, hit:
+
+```sh
+RAILS_ENV=production rails credentials:edit --environment=production
+```
+
+The following settings should be configured:
+
+
+```sh
+
+secret_key_base: [SECRET-KEY-BASE]
+
+celery_api:
+  base_url: http://localhost:8000/api
+
+grafana:
+  base_url: http://localhost:3000
+  api_base_url: http://[GRAFANA ADMIN USER]:[GRAFANA ADMIN PASSWORD]@localhost:3000/api
+
+postgresql:
+  url: postgres://[user]:[password]@[hostname]:5432/www_api
+
+
+```
+
+Also make sure to init the active record encryption:
+
+```sh
+RAILS_ENV=production rails db:encryption:init
+```
+
+And copy the `active_record_encryption` block by running again `RAILS_ENV=production rails credentials:edit --environment=production`.
+
+Further, `secret_key_base` should be set to the value in the file `config/credentials/production.key`.

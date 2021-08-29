@@ -1,2 +1,21 @@
 # Installation, configurations
 
+You can setup CronRobot with ease following this documentation section.
+
+## Main requirements
+
+At the root of the main CronRobot repository, a [docker-compose](https://github.com/cronrobot/cronrobot/blob/master/docker-compose.yml) file is available and can be used to launch quickly CronRobot.
+It contains the definition for the following services:
+
+- **[www-api](/install-configs/www-api)**: The front pages site and administration dashboard.
+- **[grafana](/install-configs/grafana)**: [Grafana](https://github.com/grafana/grafana) is used to display detailed metrics about the schedulers, and is also used for the alerts engine.
+- **[celery-admin](/install-configs/celery-admin)**: Consists of both a django API and [celery tasks queue](https://github.com/celery/celery).
+- **[rabbitmq](/install-configs/rabbitmq)**: RabbitMQ is a reliable message broker. Note that it is used by Celery, and so any message broker supported by Celery could be used.
+- **promtail**: The Celery processes periodically write logs. Promtail is the tool which will detect new available logs and forward them to loki.
+- **loki**: [Loki](https://github.com/grafana/loki) is responsible for storing logs and processing queries from Grafana.
+
+## Databases requirements
+
+Databases are required for the following services: **www-api (ruby on rails)**, **celery-admin**, **grafana**.
+As all 3 systems support Postgresql, we recommended using **Postgresql** for all of them.
+See the [installation notes about Postgresql](/install-configs/postgres).

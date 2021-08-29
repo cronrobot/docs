@@ -1,2 +1,48 @@
 # Grafana Setup
 
+
+## Booting it up
+
+```sh
+sh init_env.sh
+docker-compose up -d grafana
+```
+
+*Note that the default admin username-password are: user=admin, password=admin. Once the admin credentials are set, make sure to go back to [www-api to setup the grafana configurations](/install-configs/www-api).*
+
+
+## Shutdown
+
+```sh
+docker-compose stop grafana
+```
+
+## Configurations
+
+## Environment variables
+
+Environment variables should be stored in `/.grafana.env`.
+
+Note that all [Grafana environment variables are supported](https://grafana.com/docs/grafana/latest/administration/configuration/#configure-with-environment-variables).
+
+Some import variables for CronRobot:
+
+| ENV Variable  | Description | Recommended Value |
+|---|---|---|
+| GF_DATABASE_TYPE | DB engine.  | postgres |
+| GF_DATABASE_URL | DB URL. | postgres://[user]:[password]@[hostname]:5432/grafana |
+| GF_SERVER_ROOT_URL | Root URL (custom domain) |  |
+
+If you would like to use OAuth:
+
+| ENV Variable  | Description | Recommended Value |
+|---|---|---|
+| GF_AUTH_GENERIC_OAUTH_ENABLED |   | true |
+| GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP |   | true |
+| GF_AUTH_GENERIC_OAUTH_NAME |   | Auth0 |
+| GF_AUTH_GENERIC_OAUTH_CLIENT_ID |   |  |
+| GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET |   |  |
+| GF_AUTH_GENERIC_OAUTH_SCOPES |   | openid profile email |
+| GF_AUTH_GENERIC_OAUTH_AUTH_URL |   | https://[auth_url]/authorize |
+| GF_AUTH_GENERIC_OAUTH_TOKEN_URL |   | https://[auth_url]/oauth/token |
+| GF_AUTH_GENERIC_OAUTH_API_URL |   | https://[auth_url]/userinfo |

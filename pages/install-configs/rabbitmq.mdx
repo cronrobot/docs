@@ -1,0 +1,17 @@
+# RabbitMQ (Messages broker used by Celery)
+
+Any messages broker supported by Celery can be used. We recommend using RabbitMQ.
+
+## Booting it up
+
+```sh
+sh init_env.sh
+docker-compose up -d rabbitmq
+```
+
+## Shutdown
+
+```sh
+sh init_env.sh
+docker-compose stop rabbitmq
+```

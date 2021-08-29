@@ -1,0 +1,33 @@
+# celery-admin (Django API and Tasks broker)
+
+This service contains the a Django API (used by www-api and tasks) and celery.
+
+## Booting the API
+
+```sh
+sh init_env.sh
+docker-compose up -d celery-admin
+```
+
+## Shutdown the API
+
+```sh
+docker-compose stop celery-admin
+```
+
+## TODO: more doc on tasks broker
+
+## Environment variables and secrets
+
+Environment variables are stored in `/.env`.
+
+
+| ENV Variable  | Description | Recommended Value |
+|---|---|---|
+| PYTHONUNBUFFERED | For live logs streaming.  | 1 |
+| DJANGO_DATABASE_ENGINE | DB engine. | django.db.backends.postgresql |
+| DJANGO_DATABASE_NAME | DB name.  | django |
+| DJANGO_DATABASE_USER | DB username. |  |
+| DJANGO_DATABASE_PASSWORD | DB password.  |  |
+| DJANGO_DATABASE_HOST | DB hostname.  | |
+| DJANGO_DATABASE_PORT | DB port.  | 5432 |
