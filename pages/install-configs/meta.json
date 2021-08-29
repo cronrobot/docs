@@ -1,3 +1,4 @@
 {
-  "grafana": "Grafana"
+    "index": "Grafana",
+    "grafana": "Grafana"
 }
