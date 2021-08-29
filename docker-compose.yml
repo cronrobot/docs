@@ -1,0 +1,12 @@
+version: "3"
+services:
+  docs:
+    network_mode: "host"
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #ports:
+    #  - 3117:3117
+    environment:
+      PORT: 3117
