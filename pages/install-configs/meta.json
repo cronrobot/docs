@@ -2,7 +2,9 @@
     "index": "Introduction",
     "postgres": "Postgresql (Recommended)",
     "www-api": "www-api", 
+    "grafana": "Grafana",
     "celery-admin": "celery-admin", 
     "rabbitmq": "rabbitmq", 
-    "grafana": "Grafana"
+    "promtail": "promtail",
+    "loki": "loki" 
 }

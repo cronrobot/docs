@@ -31,3 +31,15 @@ Environment variables are stored in `/.env`.
 | DJANGO_DATABASE_PASSWORD | DB password.  |  |
 | DJANGO_DATABASE_HOST | DB hostname.  | |
 | DJANGO_DATABASE_PORT | DB port.  | 5432 |
+
+## Initial settings
+
+### Create super admin account
+
+To create the admin user, run:
+
+```sh
+docker exec -it $(docker ps -aqf "name=celery-admin") python manage.py createsuperuser
+```
+
+See [https://docs.djangoproject.com/en/3.2/intro/tutorial02/#creating-an-admin-user](https://docs.djangoproject.com/en/3.2/intro/tutorial02/#creating-an-admin-user).

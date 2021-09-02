@@ -11,7 +11,7 @@ It contains the definition for the following services:
 - **[grafana](/install-configs/grafana)**: [Grafana](https://github.com/grafana/grafana) is used to display detailed metrics about the schedulers, and is also used for the alerts engine.
 - **[celery-admin](/install-configs/celery-admin)**: Consists of both a django API and [celery tasks queue](https://github.com/celery/celery).
 - **[rabbitmq](/install-configs/rabbitmq)**: RabbitMQ is a reliable message broker. Note that it is used by Celery, and so any message broker supported by Celery could be used.
-- **promtail**: The Celery processes periodically write logs. Promtail is the tool which will detect new available logs and forward them to loki.
+- **[promtail](/install-configs/promtail)**: The Celery processes periodically write logs. Promtail is the tool which will detect new available logs and forward them to loki.
 - **loki**: [Loki](https://github.com/grafana/loki) is responsible for storing logs and processing queries from Grafana.
 
 ## Databases requirements
