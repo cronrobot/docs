@@ -42,7 +42,7 @@ To create the admin user, run:
 docker exec -it $(docker ps -aqf "name=celery-admin") python manage.py createsuperuser
 ```
 
-See [https://docs.djangoproject.com/en/3.2/intro/tutorial02/#creating-an-admin-user](https://docs.djangoproject.com/en/3.2/intro/tutorial02/#creating-an-admin-user).
+See [django documentation](https://docs.djangoproject.com/en/3.2/intro/tutorial02/#creating-an-admin-user).
 
 ## Celery
 
@@ -54,14 +54,18 @@ We use [pm2](https://pm2.keymetrics.io/) to manage the celery processes for conv
 
 Once you have pm2 installed, run the folloring commands to start the celery beat and worker processes:
 
-        cd celery-admin
-        pm2 start boot-celery-beat.json
-        pm2 start boot-celery-worker.json
+```sh
+cd celery-admin
+pm2 start boot-celery-beat.json
+pm2 start boot-celery-worker.json
+```
 
 ### Shutdown celery processes
 
-        pm2 stop celery-beat
-        pm2 stop celery-worker
+```sh
+pm2 stop celery-beat
+pm2 stop celery-worker
+```
 
 ### Environment variables and secrets
 
@@ -71,7 +75,7 @@ Environment variables are stored in `/celery-admin/.env`.
 | ENV Variable  | Description | Recommended Value |
 |---|---|---|
 | TASK_RESULTS_PATH | Main scheduler logs path. | ../scheduler-logs/all.json |
-| SECRETS_API_BASE_URL | The **www-api** API base URL. | http://localhost:3030/api |
+| SECRETS_API_BASE_URL | The **www-api** API base URL. | `http://localhost:3030/api` |
 | RESOURCE_SECRETS_API_CLIENT_ID | Secrets API client ID. |  |
 | RESOURCE_SECRETS_API_CLIENT_SECRET | Secrets API secret. |  |
 | DJANGO_DATABASE_ENGINE |  | django.db.backends.postgresql |
@@ -90,10 +94,14 @@ the secrets.
 
 Run the following in order to boot the **www-api** rails console:
 
-        docker exec -it $(docker ps -aqf "name=www-api") bin/rails c
+```sh
+docker exec -it $(docker ps -aqf "name=www-api") bin/rails c
+```
 
 Then simply enter the following:
 
-        AuthToken.create!
+```sh
+AuthToken.create!
+```
 
 It will output **client_id** and **client_secret** which you can use for **RESOURCE_SECRETS_API_CLIENT_ID** and **RESOURCE_SECRETS_API_CLIENT_SECRET** environment variables.
