@@ -8,11 +8,11 @@ At the root of the main CronRobot repository, a [docker-compose](https://github.
 It contains the definition for the following services:
 
 - **[www-api](/install-configs/www-api)**: The front pages site and administration dashboard.
-- **[grafana](/install-configs/grafana)**: [Grafana](https://github.com/grafana/grafana) is used to display detailed metrics about the schedulers, and is also used for the alerts engine.
+- **[grafana](/install-configs/grafana)**: Grafana is used to display detailed metrics about the schedulers, and is also used for the alerts engine. [Grafana Github](https://github.com/grafana/grafana)
 - **[celery-admin](/install-configs/celery-admin)**: Consists of both a django API and [celery tasks queue](https://github.com/celery/celery).
 - **[rabbitmq](/install-configs/rabbitmq)**: RabbitMQ is a reliable message broker. Note that it is used by Celery, and so any message broker supported by Celery could be used.
 - **[promtail](/install-configs/promtail)**: The Celery processes periodically write logs. Promtail is the tool which will detect new available logs and forward them to loki.
-- **loki**: [Loki](https://github.com/grafana/loki) is responsible for storing logs and processing queries from Grafana.
+- **[loki](/install-configs/loki)**: Loki is responsible for storing logs and processing queries from Grafana. [Loki Grafana Github](https://github.com/grafana/loki)
 
 ## Databases requirements
 
