@@ -2,22 +2,22 @@
 
 This service contains the a Django API (used by www-api and tasks) and celery.
 
-## Booting the API
+## API
+
+### Booting the API
 
 ```sh
 sh init_env.sh
 docker-compose up -d celery-admin
 ```
 
-## Shutdown the API
+### Shutdown the API
 
 ```sh
 docker-compose stop celery-admin
 ```
 
-## TODO: more doc on tasks broker
-
-## Environment variables and secrets
+### Environment variables and secrets
 
 Environment variables are stored in `/.env`.
 
@@ -32,7 +32,7 @@ Environment variables are stored in `/.env`.
 | DJANGO_DATABASE_HOST | DB hostname.  | |
 | DJANGO_DATABASE_PORT | DB port.  | 5432 |
 
-## Initial settings
+### Initial settings
 
 ### Create super admin account
 
@@ -43,3 +43,57 @@ docker exec -it $(docker ps -aqf "name=celery-admin") python manage.py createsup
 ```
 
 See [https://docs.djangoproject.com/en/3.2/intro/tutorial02/#creating-an-admin-user](https://docs.djangoproject.com/en/3.2/intro/tutorial02/#creating-an-admin-user).
+
+## Celery
+
+The section part of this sub project is celery, used to run the actual tasks.
+
+### Booting the celery processes
+
+We use [pm2](https://pm2.keymetrics.io/) to manage the celery processes for convenience.
+
+Once you have pm2 installed, run the folloring commands to start the celery beat and worker processes:
+
+        cd celery-admin
+        pm2 start boot-celery-beat.json
+        pm2 start boot-celery-worker.json
+
+### Shutdown celery processes
+
+        pm2 stop celery-beat
+        pm2 stop celery-worker
+
+### Environment variables and secrets
+
+Environment variables are stored in `/celery-admin/.env`.
+
+
+| ENV Variable  | Description | Recommended Value |
+|---|---|---|
+| TASK_RESULTS_PATH | Main scheduler logs path. | ../scheduler-logs/all.json |
+| SECRETS_API_BASE_URL | The **www-api** API base URL. | http://localhost:3030/api |
+| RESOURCE_SECRETS_API_CLIENT_ID | Secrets API client ID. |  |
+| RESOURCE_SECRETS_API_CLIENT_SECRET | Secrets API secret. |  |
+| DJANGO_DATABASE_ENGINE |  | django.db.backends.postgresql |
+| DJANGO_DATABASE_NAME |  | django |
+| DJANGO_DATABASE_USER |  |  |
+| DJANGO_DATABASE_PASSWORD |  |  |
+| DJANGO_DATABASE_HOST |  |  |
+| DJANGO_DATABASE_PORT |  |  |
+| DOTENV_PATH |  | .env |
+
+
+#### Generating an API secret token
+
+This service requires to provide a secret client id and client secret in order to retrieve
+the secrets.
+
+Run the following in order to boot the **www-api** rails console:
+
+        docker exec -it $(docker ps -aqf "name=www-api") bin/rails c
+
+Then simply enter the following:
+
+        AuthToken.create!
+
+It will output **client_id** and **client_secret** which you can use for **RESOURCE_SECRETS_API_CLIENT_ID** and **RESOURCE_SECRETS_API_CLIENT_SECRET** environment variables.

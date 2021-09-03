@@ -15,3 +15,11 @@ docker-compose up -d loki
 sh init_env.sh
 docker-compose stop loki
 ```
+
+## Configurations
+
+The configurations should be located in: grafana/loki/etc/local-config.yaml
+
+You can copy some sample configuration with:
+
+        cp grafana/loki/etc/local-config.yaml.sample grafana/loki/etc/local-config.yaml
