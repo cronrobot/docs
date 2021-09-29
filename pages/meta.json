@@ -1,8 +1,5 @@
 {
   "index": "Introduction",
-  "get-started": "Get Started",
   "install-configs": "Installation, configurations",
-  "features": "Features",
-  "themes": "Themes",
-  "advanced": "Advanced"
+  "features": "Features"
 }
