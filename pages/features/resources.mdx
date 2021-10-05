@@ -1,0 +1,24 @@
+# Resources
+
+Resources are entities such as variables, credentials defined at the project level and can
+be used in all schedulers.
+
+There are currently **variables** and **ssh credential** resource types.
+
+## Variable Resources
+
+Variables are specified by a name and its value. Then, whenever you use it in text fields, the 
+value will be replaced by the variable value at runtime.
+A variable allows to define a concept and its value and reuse at multiple places, typically used for shared configurations.
+And so if you need to change a configuration, it can be done once by modifying the variable.
+
+In the scheduler fields (for example in text fields), we use the mustache framework, and so for example if you have a variable **MY_VARIABLE**, then in the text field you can use it as follows:
+
+```sh
+{{ MY_VARIABLE}}
+```
+## SSH Resources
+
+An SSH resource is an SSH configuration credential allowing to connect to a remote SSH server.
+
+SSH resources can be used in SSH schedulers, where you can select an SSH resource.

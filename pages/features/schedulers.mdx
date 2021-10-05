@@ -1,6 +1,9 @@
 # Schedulers
 
 A scheduler is the process which periodically executes a task or request.
+
+## Schedule (crontab)
+
 The periodic behaviour is based on the crontab format:
 
 ```sh
@@ -11,3 +14,44 @@ where respectively the parts consist of:
 
 - **mm**: minute (0-59)
 - **hh**: hour (0-23)
+- **dm**: day of month (1-31)
+- **mo**: month (1-12)
+- **hh**: hour (0-23)
+
+And so if you want to run a task every minute, you'll write the following:
+
+```sh
+* * * * *
+```
+
+And every 10 minutes:
+
+```sh
+*/10 * * * *
+```
+
+## Scheduler types
+
+We have different scheduler types depending on the technology you are planning to monitor/execute.
+
+### HTTP
+
+You can schedule HTTP/HTTPS requests and expect (by default) a successful status code.
+
+### TCP
+
+TCP-based schedulers allow to check if a given TCP port is listening or not.
+
+### SSH
+
+SSH schedulers use an existing SSH resource containing the credentials to connect to a remote
+SSH server.
+
+In this scheduler, a command needs to be specified, which will be run.
+
+By default, it expects that the command ends with success (exit code 0).
+
+## Operations
+
+Schedulers can be updated, paused/unpaused, and you can also access the Grafana dashboard,
+which provides detailed about the recurrent scheduling events.
