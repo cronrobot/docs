@@ -6,7 +6,7 @@ export default {
     <>
       <span className="mr-2 font-extrabold hidden md:inline">CronRobot</span>
       <span className="text-gray-600 font-small hidden md:inline">
-        The open task scheduling and monitoring service. 
+        The open web monitoring and automation platform. 
       </span>
     </>
   ),
